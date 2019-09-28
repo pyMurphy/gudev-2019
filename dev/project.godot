@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Area51"
 run/main_scene="res://World.tscn"
+boot_splash/image="res://img/logo.png"
 config/icon="res://icon.png"
 
 [display]
