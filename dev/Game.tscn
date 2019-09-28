@@ -91,6 +91,7 @@ texture = ExtResource( 3 )
 position = Vector2( 53, 52 )
 scale = Vector2( 0.171875, 0.171875 )
 frames = SubResource( 2 )
+frame = 6
 playing = true
 
 [node name="Money" type="Label" parent="HUD"]
