@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://img/background.png" type="Texture" id=1]
 [ext_resource path="res://img/logo.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://animations/coin/Coin 7.png" type="Texture" id=10]
 [ext_resource path="res://animations/coin/Coin 8.png" type="Texture" id=11]
 [ext_resource path="res://fonts/dealerplate california.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://img/circle.png" type="Texture" id=13]
+[ext_resource path="res://img/guard_icon.png" type="Texture" id=14]
+[ext_resource path="res://music/inferno.wav" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "UFO"
@@ -91,7 +94,7 @@ texture = ExtResource( 3 )
 position = Vector2( 53, 52 )
 scale = Vector2( 0.171875, 0.171875 )
 frames = SubResource( 2 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="Money" type="Label" parent="HUD"]
@@ -104,3 +107,32 @@ custom_fonts/font = SubResource( 3 )
 text = "500"
 align = 1
 valign = 1
+
+[node name="Character" type="Control" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="circle" type="Sprite" parent="HUD/Character"]
+position = Vector2( 50, 280 )
+scale = Vector2( 0.357031, 0.357031 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="guard_icon" type="Sprite" parent="HUD/Character/circle"]
+position = Vector2( 0, -2.80078 )
+scale = Vector2( 0.436725, 0.436725 )
+texture = ExtResource( 14 )
+
+[node name="circle2" type="Sprite" parent="."]
+position = Vector2( 70, 430 )
+scale = Vector2( 0.357031, 0.357031 )
+texture = ExtResource( 13 )
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 15 )
+volume_db = -20.0
+autoplay = true
