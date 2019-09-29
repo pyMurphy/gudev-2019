@@ -1,20 +1,31 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://img/background.png" type="Texture" id=1]
-[ext_resource path="res://img/logo.png" type="Texture" id=2]
-[ext_resource path="res://img/counter.png" type="Texture" id=3]
-[ext_resource path="res://animations/coin/Coin 1.png" type="Texture" id=4]
-[ext_resource path="res://animations/coin/Coin 2.png" type="Texture" id=5]
-[ext_resource path="res://animations/coin/Coin 3.png" type="Texture" id=6]
-[ext_resource path="res://animations/coin/Coin 4.png" type="Texture" id=7]
-[ext_resource path="res://animations/coin/Coin 5.png" type="Texture" id=8]
-[ext_resource path="res://animations/coin/Coin 6.png" type="Texture" id=9]
-[ext_resource path="res://animations/coin/Coin 7.png" type="Texture" id=10]
-[ext_resource path="res://animations/coin/Coin 8.png" type="Texture" id=11]
-[ext_resource path="res://fonts/dealerplate california.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://img/circle.png" type="Texture" id=13]
-[ext_resource path="res://img/guard_icon.png" type="Texture" id=14]
-[ext_resource path="res://music/inferno.wav" type="AudioStream" id=15]
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://img/halo.png" type="Texture" id=2]
+[ext_resource path="res://img/background.png" type="Texture" id=3]
+[ext_resource path="res://img/ufo.png" type="Texture" id=4]
+[ext_resource path="res://img/facility.png" type="Texture" id=5]
+[ext_resource path="res://img/guard.png" type="Texture" id=6]
+[ext_resource path="res://img/sniper.png" type="Texture" id=7]
+[ext_resource path="res://img/ar.png" type="Texture" id=8]
+[ext_resource path="res://img/counter.png" type="Texture" id=9]
+[ext_resource path="res://animations/coin/Coin 1.png" type="Texture" id=10]
+[ext_resource path="res://animations/coin/Coin 2.png" type="Texture" id=11]
+[ext_resource path="res://animations/coin/Coin 3.png" type="Texture" id=12]
+[ext_resource path="res://animations/coin/Coin 4.png" type="Texture" id=13]
+[ext_resource path="res://animations/coin/Coin 5.png" type="Texture" id=14]
+[ext_resource path="res://animations/coin/Coin 6.png" type="Texture" id=15]
+[ext_resource path="res://animations/coin/Coin 7.png" type="Texture" id=16]
+[ext_resource path="res://animations/coin/Coin 8.png" type="Texture" id=17]
+[ext_resource path="res://fonts/dealerplate california.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://img/currency.png" type="Texture" id=19]
+[ext_resource path="res://Characters.gd" type="Script" id=20]
+[ext_resource path="res://img/circle.png" type="Texture" id=21]
+[ext_resource path="res://img/guard_icon.png" type="Texture" id=22]
+[ext_resource path="res://img/ar_icon.png" type="Texture" id=23]
+[ext_resource path="res://img/sniper_icon.png" type="Texture" id=24]
+[ext_resource path="res://img/nerf_icon.png" type="Texture" id=25]
+[ext_resource path="res://music/inferno.wav" type="AudioStream" id=26]
 
 [sub_resource type="Animation" id=1]
 resource_name = "UFO"
@@ -47,7 +58,7 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 8.0
@@ -56,30 +67,219 @@ animations = [ {
 [sub_resource type="DynamicFont" id=3]
 size = 50
 extra_spacing_char = 5
-font_data = ExtResource( 12 )
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 80
+font_data = ExtResource( 18 )
 
 [node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Board" type="Control" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.111
+margin_top = 10.0
+margin_right = 11.1111
+margin_bottom = 10.0
+
+[node name="col0" type="Node" parent="Board"]
+editor/display_folded = true
+
+[node name="0" type="TextureButton" parent="Board/col0"]
+anchor_bottom = 1.0
+margin_left = 700.0
+margin_top = 360.0
+margin_right = 1392.0
+margin_bottom = -28.0
+rect_scale = Vector2( 0.13, 0.13 )
+texture_hover = ExtResource( 2 )
+
+[node name="1" type="TextureButton" parent="Board/col0"]
+anchor_bottom = 1.0
+margin_left = 646.0
+margin_top = 456.0
+margin_right = 1415.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.15, 0.15 )
+texture_hover = ExtResource( 2 )
+
+[node name="2" type="TextureButton" parent="Board/col0"]
+anchor_bottom = 1.0
+margin_left = 566.0
+margin_top = 565.8
+margin_right = 1399.0
+margin_bottom = 87.8
+rect_scale = Vector2( 0.19, 0.19 )
+texture_hover = ExtResource( 2 )
+
+[node name="3" type="TextureButton" parent="Board/col0"]
+anchor_bottom = 1.0
+margin_left = 459.0
+margin_top = 694.0
+margin_right = 1251.0
+margin_bottom = 194.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_hover = ExtResource( 2 )
+
+[node name="4" type="TextureButton" parent="Board/col0"]
+anchor_bottom = 1.0
+margin_left = 349.0
+margin_top = 859.0
+margin_right = 1182.0
+margin_bottom = 359.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture_hover = ExtResource( 2 )
+
+[node name="col1" type="Node" parent="Board"]
+editor/display_folded = true
+
+[node name="0" type="TextureButton" parent="Board/col1"]
+anchor_bottom = 1.0
+margin_left = 860.0
+margin_top = 360.0
+margin_right = 1552.0
+margin_bottom = -28.0
+rect_scale = Vector2( 0.13, 0.13 )
+texture_hover = ExtResource( 2 )
+
+[node name="1" type="TextureButton" parent="Board/col1"]
+anchor_bottom = 1.0
+margin_left = 835.0
+margin_top = 456.0
+margin_right = 1604.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.15, 0.15 )
+texture_hover = ExtResource( 2 )
+
+[node name="2" type="TextureButton" parent="Board/col1"]
+anchor_bottom = 1.0
+margin_left = 804.0
+margin_top = 571.279
+margin_right = 1637.0
+margin_bottom = 93.2788
+rect_scale = Vector2( 0.19, 0.19 )
+texture_hover = ExtResource( 2 )
+
+[node name="3" type="TextureButton" parent="Board/col1"]
+anchor_bottom = 1.0
+margin_left = 759.0
+margin_top = 698.0
+margin_right = 1551.0
+margin_bottom = 198.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_hover = ExtResource( 2 )
+
+[node name="4" type="TextureButton" parent="Board/col1"]
+anchor_bottom = 1.0
+margin_left = 710.0
+margin_top = 859.0
+margin_right = 1543.0
+margin_bottom = 359.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture_hover = ExtResource( 2 )
+
+[node name="col2" type="Node" parent="Board"]
+
+[node name="0" type="TextureButton" parent="Board/col2"]
+anchor_bottom = 1.0
+margin_left = 1030.0
+margin_top = 360.0
+margin_right = 1722.0
+margin_bottom = -28.0
+rect_scale = Vector2( 0.13, 0.13 )
+texture_hover = ExtResource( 2 )
+
+[node name="1" type="TextureButton" parent="Board/col2"]
+anchor_bottom = 1.0
+margin_left = 1040.0
+margin_top = 456.0
+margin_right = 1809.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.15, 0.15 )
+texture_hover = ExtResource( 2 )
+
+[node name="2" type="TextureButton" parent="Board/col2"]
+anchor_bottom = 1.0
+margin_left = 1046.0
+margin_top = 571.279
+margin_right = 1879.0
+margin_bottom = 93.2788
+rect_scale = Vector2( 0.19, 0.19 )
+texture_hover = ExtResource( 2 )
+
+[node name="3" type="TextureButton" parent="Board/col2"]
+anchor_bottom = 1.0
+margin_left = 1054.0
+margin_top = 698.0
+margin_right = 1846.0
+margin_bottom = 198.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_hover = ExtResource( 2 )
+
+[node name="4" type="TextureButton" parent="Board/col2"]
+anchor_bottom = 1.0
+margin_left = 1068.0
+margin_top = 859.0
+margin_right = 1901.0
+margin_bottom = 359.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture_hover = ExtResource( 2 )
 
 [node name="Background" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="background" type="Sprite" parent="Background"]
-position = Vector2( 960, 550 )
+position = Vector2( 945, 533 )
 scale = Vector2( 0.511574, 0.511574 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+editor/display_folded = true
 autoplay = "UFO"
 anims/UFO = SubResource( 1 )
 
 [node name="logo" type="Sprite" parent="Background/AnimationPlayer"]
-position = Vector2( 1241.6, 42.64 )
-rotation = 0.0652601
-scale = Vector2( 0.0659722, 0.0561343 )
-texture = ExtResource( 2 )
+position = Vector2( 550, 51 )
+rotation = 0.20944
+scale = Vector2( 0.136772, 0.116376 )
+texture = ExtResource( 4 )
+
+[node name="facility" type="Sprite" parent="Background"]
+position = Vector2( 1110, 223.25 )
+scale = Vector2( 0.501904, 0.501904 )
+texture = ExtResource( 5 )
+
+[node name="Templates" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Guard" type="Node2D" parent="Templates"]
+
+[node name="guard5" type="Sprite" parent="Templates/Guard"]
+position = Vector2( 470, 790 )
+scale = Vector2( 0.84849, 0.848489 )
+texture = ExtResource( 6 )
+
+[node name="Sniper" type="Node2D" parent="Templates"]
+
+[node name="sniper5" type="Sprite" parent="Templates/Sniper"]
+position = Vector2( 930, 790 )
+scale = Vector2( 0.87173, 0.871731 )
+texture = ExtResource( 7 )
+
+[node name="AR" type="Node2D" parent="Templates"]
+
+[node name="ar5" type="Sprite" parent="Templates/AR"]
+position = Vector2( 1270, 780 )
+scale = Vector2( 0.875392, 0.875392 )
+texture = ExtResource( 8 )
 
 [node name="HUD" type="Control" parent="."]
+editor/display_folded = true
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 350.0
@@ -88,51 +288,165 @@ margin_bottom = 140.0
 [node name="counter" type="Sprite" parent="HUD"]
 position = Vector2( 160, 70 )
 scale = Vector2( 0.351852, 0.351852 )
-texture = ExtResource( 3 )
+texture = ExtResource( 9 )
 
 [node name="coin" type="AnimatedSprite" parent="HUD"]
 position = Vector2( 53, 52 )
 scale = Vector2( 0.171875, 0.171875 )
 frames = SubResource( 2 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Money" type="Label" parent="HUD"]
-margin_left = 110.0
-margin_top = 31.0
-margin_right = 280.0
-margin_bottom = 82.0
+editor/display_folded = true
+margin_left = 166.0
+margin_top = 30.0
+margin_right = 306.0
+margin_bottom = 81.0
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 3 )
 text = "500"
-align = 1
 valign = 1
 
-[node name="Character" type="Control" parent="HUD"]
+[node name="currency" type="Sprite" parent="HUD/Money"]
+position = Vector2( -30, 20 )
+scale = Vector2( 0.308824, 0.308824 )
+texture = ExtResource( 19 )
+
+[node name="Characters" type="Control" parent="HUD"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 20 )
 
-[node name="circle" type="Sprite" parent="HUD/Character"]
-position = Vector2( 50, 280 )
-scale = Vector2( 0.357031, 0.357031 )
-texture = ExtResource( 13 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="guards" type="TextureButton" parent="HUD/Characters"]
+editor/display_folded = true
+margin_left = -7.12495
+margin_top = 222.875
+margin_right = 312.875
+margin_bottom = 542.875
+rect_scale = Vector2( 0.35, 0.35 )
+texture_normal = ExtResource( 21 )
 
-[node name="guard_icon" type="Sprite" parent="HUD/Character/circle"]
-position = Vector2( 0, -2.80078 )
-scale = Vector2( 0.436725, 0.436725 )
-texture = ExtResource( 14 )
+[node name="guard_icon" type="Sprite" parent="HUD/Characters/guards"]
+position = Vector2( 163.214, 160.357 )
+scale = Vector2( 0.445498, 0.445498 )
+texture = ExtResource( 22 )
 
-[node name="circle2" type="Sprite" parent="."]
-position = Vector2( 70, 430 )
-scale = Vector2( 0.357031, 0.357031 )
-texture = ExtResource( 13 )
+[node name="Money" type="Label" parent="HUD/Characters/guards"]
+editor/display_folded = true
+margin_left = 420.357
+margin_top = 123.661
+margin_right = 560.357
+margin_bottom = 204.661
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 4 )
+text = "75"
+valign = 1
+
+[node name="currency" type="Sprite" parent="HUD/Characters/guards/Money"]
+position = Vector2( -51.4286, 31.4286 )
+scale = Vector2( 0.498949, 0.498949 )
+texture = ExtResource( 19 )
+
+[node name="ar" type="TextureButton" parent="HUD/Characters"]
+editor/display_folded = true
+margin_left = -7.12495
+margin_top = 350.0
+margin_right = 312.875
+margin_bottom = 670.0
+rect_scale = Vector2( 0.35, 0.35 )
+texture_normal = ExtResource( 21 )
+
+[node name="ar_icon" type="Sprite" parent="HUD/Characters/ar"]
+position = Vector2( 203.214, 154.286 )
+scale = Vector2( 0.407813, 0.407813 )
+texture = ExtResource( 23 )
+
+[node name="Money" type="Label" parent="HUD/Characters/ar"]
+editor/display_folded = true
+margin_left = 420.357
+margin_top = 123.661
+margin_right = 560.357
+margin_bottom = 204.661
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 4 )
+text = "125"
+valign = 1
+
+[node name="currency" type="Sprite" parent="HUD/Characters/ar/Money"]
+position = Vector2( -51.4286, 31.4286 )
+scale = Vector2( 0.498949, 0.498949 )
+texture = ExtResource( 19 )
+
+[node name="sniper" type="TextureButton" parent="HUD/Characters"]
+margin_left = -7.12495
+margin_top = 470.0
+margin_right = 312.875
+margin_bottom = 790.0
+rect_scale = Vector2( 0.35, 0.35 )
+texture_normal = ExtResource( 21 )
+
+[node name="Money" type="Label" parent="HUD/Characters/sniper"]
+margin_left = 420.357
+margin_top = 123.661
+margin_right = 560.357
+margin_bottom = 204.661
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 4 )
+text = "250"
+valign = 1
+
+[node name="currency" type="Sprite" parent="HUD/Characters/sniper/Money"]
+position = Vector2( -51.4286, 31.4286 )
+scale = Vector2( 0.498949, 0.498949 )
+texture = ExtResource( 19 )
+
+[node name="sniper_icon" type="Sprite" parent="HUD/Characters/sniper"]
+position = Vector2( 208.928, 134.286 )
+scale = Vector2( 0.435287, 0.435287 )
+texture = ExtResource( 24 )
+
+[node name="nerf" type="TextureButton" parent="HUD/Characters"]
+margin_left = -7.12495
+margin_top = 590.0
+margin_right = 312.875
+margin_bottom = 910.0
+rect_scale = Vector2( 0.35, 0.35 )
+texture_normal = ExtResource( 21 )
+
+[node name="Money" type="Label" parent="HUD/Characters/nerf"]
+margin_left = 420.357
+margin_top = 123.661
+margin_right = 560.357
+margin_bottom = 204.661
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 4 )
+text = "1000
+"
+valign = 1
+
+[node name="currency" type="Sprite" parent="HUD/Characters/nerf/Money"]
+position = Vector2( -51.4286, 31.4286 )
+scale = Vector2( 0.498949, 0.498949 )
+texture = ExtResource( 19 )
+
+[node name="sniper_icon" type="Sprite" parent="HUD/Characters/nerf"]
+position = Vector2( 154.643, 171.429 )
+scale = Vector2( 0.842644, 0.842644 )
+texture = ExtResource( 25 )
 
 [node name="Audio" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 15 )
+stream = ExtResource( 26 )
 volume_db = -20.0
 autoplay = true
+[connection signal="mouse_entered" from="HUD/Characters/guards" to="HUD/Characters" method="_on_guards_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/Characters/guards" to="HUD/Characters" method="_on_guards_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/Characters/ar" to="HUD/Characters" method="_on_ar_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/Characters/ar" to="HUD/Characters" method="_on_ar_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/Characters/sniper" to="HUD/Characters" method="_on_sniper_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/Characters/sniper" to="HUD/Characters" method="_on_sniper_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/Characters/nerf" to="HUD/Characters" method="_on_nerf_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/Characters/nerf" to="HUD/Characters" method="_on_nerf_mouse_exited"]
