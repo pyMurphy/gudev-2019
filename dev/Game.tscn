@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://img/halo.png" type="Texture" id=2]
@@ -7,25 +7,29 @@
 [ext_resource path="res://img/facility.png" type="Texture" id=5]
 [ext_resource path="res://img/guard.png" type="Texture" id=6]
 [ext_resource path="res://img/sniper.png" type="Texture" id=7]
-[ext_resource path="res://img/ar.png" type="Texture" id=8]
-[ext_resource path="res://img/counter.png" type="Texture" id=9]
-[ext_resource path="res://animations/coin/Coin 1.png" type="Texture" id=10]
-[ext_resource path="res://animations/coin/Coin 2.png" type="Texture" id=11]
-[ext_resource path="res://animations/coin/Coin 3.png" type="Texture" id=12]
-[ext_resource path="res://animations/coin/Coin 4.png" type="Texture" id=13]
-[ext_resource path="res://animations/coin/Coin 5.png" type="Texture" id=14]
-[ext_resource path="res://animations/coin/Coin 6.png" type="Texture" id=15]
-[ext_resource path="res://animations/coin/Coin 7.png" type="Texture" id=16]
-[ext_resource path="res://animations/coin/Coin 8.png" type="Texture" id=17]
-[ext_resource path="res://fonts/dealerplate california.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://img/currency.png" type="Texture" id=19]
-[ext_resource path="res://Characters.gd" type="Script" id=20]
-[ext_resource path="res://img/circle.png" type="Texture" id=21]
-[ext_resource path="res://img/guard_icon.png" type="Texture" id=22]
-[ext_resource path="res://img/ar_icon.png" type="Texture" id=23]
-[ext_resource path="res://img/sniper_icon.png" type="Texture" id=24]
-[ext_resource path="res://img/nerf_icon.png" type="Texture" id=25]
-[ext_resource path="res://music/inferno.wav" type="AudioStream" id=26]
+[ext_resource path="res://sniper5.gd" type="Script" id=8]
+[ext_resource path="res://health.gd" type="Script" id=9]
+[ext_resource path="res://dmg.gd" type="Script" id=10]
+[ext_resource path="res://img/ar.png" type="Texture" id=11]
+[ext_resource path="res://img/alien.png" type="Texture" id=12]
+[ext_resource path="res://img/counter.png" type="Texture" id=13]
+[ext_resource path="res://animations/coin/Coin 1.png" type="Texture" id=14]
+[ext_resource path="res://animations/coin/Coin 2.png" type="Texture" id=15]
+[ext_resource path="res://animations/coin/Coin 3.png" type="Texture" id=16]
+[ext_resource path="res://animations/coin/Coin 4.png" type="Texture" id=17]
+[ext_resource path="res://animations/coin/Coin 5.png" type="Texture" id=18]
+[ext_resource path="res://animations/coin/Coin 6.png" type="Texture" id=19]
+[ext_resource path="res://animations/coin/Coin 7.png" type="Texture" id=20]
+[ext_resource path="res://animations/coin/Coin 8.png" type="Texture" id=21]
+[ext_resource path="res://fonts/dealerplate california.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://img/currency.png" type="Texture" id=23]
+[ext_resource path="res://Characters.gd" type="Script" id=24]
+[ext_resource path="res://img/circle.png" type="Texture" id=25]
+[ext_resource path="res://img/guard_icon.png" type="Texture" id=26]
+[ext_resource path="res://img/ar_icon.png" type="Texture" id=27]
+[ext_resource path="res://img/sniper_icon.png" type="Texture" id=28]
+[ext_resource path="res://img/nerf_icon.png" type="Texture" id=29]
+[ext_resource path="res://music/inferno.wav" type="AudioStream" id=30]
 
 [sub_resource type="Animation" id=1]
 resource_name = "UFO"
@@ -58,7 +62,7 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "default",
 "speed": 8.0
@@ -67,17 +71,16 @@ animations = [ {
 [sub_resource type="DynamicFont" id=3]
 size = 50
 extra_spacing_char = 5
-font_data = ExtResource( 18 )
+font_data = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 80
-font_data = ExtResource( 18 )
+font_data = ExtResource( 22 )
 
 [node name="World" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Board" type="Control" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 11.111
@@ -258,11 +261,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Guard" type="Node2D" parent="Templates"]
+editor/display_folded = true
 
 [node name="guard5" type="Sprite" parent="Templates/Guard"]
 position = Vector2( 470, 790 )
 scale = Vector2( 0.84849, 0.848489 )
 texture = ExtResource( 6 )
+
+[node name="health" type="Node" parent="Templates/Guard/guard5"]
+
+[node name="200" type="Node" parent="Templates/Guard/guard5/health"]
+
+[node name="dmg" type="Node" parent="Templates/Guard/guard5"]
+
+[node name="10" type="Node" parent="Templates/Guard/guard5/dmg"]
 
 [node name="Sniper" type="Node2D" parent="Templates"]
 
@@ -270,13 +282,46 @@ texture = ExtResource( 6 )
 position = Vector2( 930, 790 )
 scale = Vector2( 0.87173, 0.871731 )
 texture = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="health" type="Node" parent="Templates/Sniper/sniper5"]
+script = ExtResource( 9 )
+
+[node name="dmg" type="Node" parent="Templates/Sniper/sniper5"]
+script = ExtResource( 10 )
 
 [node name="AR" type="Node2D" parent="Templates"]
 
 [node name="ar5" type="Sprite" parent="Templates/AR"]
 position = Vector2( 1270, 780 )
 scale = Vector2( 0.875392, 0.875392 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
+
+[node name="health" type="Node" parent="Templates/AR/ar5"]
+editor/display_folded = true
+
+[node name="100" type="Node" parent="Templates/AR/ar5/health"]
+
+[node name="dmg" type="Node" parent="Templates/AR/ar5"]
+editor/display_folded = true
+
+[node name="40" type="Node" parent="Templates/AR/ar5/dmg"]
+
+[node name="Enemy" type="Node2D" parent="Templates"]
+
+[node name="alien" type="Sprite" parent="Templates/Enemy"]
+editor/display_folded = true
+position = Vector2( 1760, 820 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 12 )
+
+[node name="health" type="Node" parent="Templates/Enemy/alien"]
+
+[node name="100" type="Node" parent="Templates/Enemy/alien/health"]
+
+[node name="dmg" type="Node" parent="Templates/Enemy/alien"]
+
+[node name="10" type="Node" parent="Templates/Enemy/alien/dmg"]
 
 [node name="HUD" type="Control" parent="."]
 editor/display_folded = true
@@ -288,13 +333,13 @@ margin_bottom = 140.0
 [node name="counter" type="Sprite" parent="HUD"]
 position = Vector2( 160, 70 )
 scale = Vector2( 0.351852, 0.351852 )
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 
 [node name="coin" type="AnimatedSprite" parent="HUD"]
 position = Vector2( 53, 52 )
 scale = Vector2( 0.171875, 0.171875 )
 frames = SubResource( 2 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Money" type="Label" parent="HUD"]
@@ -311,12 +356,12 @@ valign = 1
 [node name="currency" type="Sprite" parent="HUD/Money"]
 position = Vector2( -30, 20 )
 scale = Vector2( 0.308824, 0.308824 )
-texture = ExtResource( 19 )
+texture = ExtResource( 23 )
 
 [node name="Characters" type="Control" parent="HUD"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 20 )
+script = ExtResource( 24 )
 
 [node name="guards" type="TextureButton" parent="HUD/Characters"]
 editor/display_folded = true
@@ -325,12 +370,12 @@ margin_top = 222.875
 margin_right = 312.875
 margin_bottom = 542.875
 rect_scale = Vector2( 0.35, 0.35 )
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 25 )
 
 [node name="guard_icon" type="Sprite" parent="HUD/Characters/guards"]
 position = Vector2( 163.214, 160.357 )
 scale = Vector2( 0.445498, 0.445498 )
-texture = ExtResource( 22 )
+texture = ExtResource( 26 )
 
 [node name="Money" type="Label" parent="HUD/Characters/guards"]
 editor/display_folded = true
@@ -346,7 +391,7 @@ valign = 1
 [node name="currency" type="Sprite" parent="HUD/Characters/guards/Money"]
 position = Vector2( -51.4286, 31.4286 )
 scale = Vector2( 0.498949, 0.498949 )
-texture = ExtResource( 19 )
+texture = ExtResource( 23 )
 
 [node name="ar" type="TextureButton" parent="HUD/Characters"]
 editor/display_folded = true
@@ -355,12 +400,12 @@ margin_top = 350.0
 margin_right = 312.875
 margin_bottom = 670.0
 rect_scale = Vector2( 0.35, 0.35 )
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 25 )
 
 [node name="ar_icon" type="Sprite" parent="HUD/Characters/ar"]
 position = Vector2( 203.214, 154.286 )
 scale = Vector2( 0.407813, 0.407813 )
-texture = ExtResource( 23 )
+texture = ExtResource( 27 )
 
 [node name="Money" type="Label" parent="HUD/Characters/ar"]
 editor/display_folded = true
@@ -376,7 +421,7 @@ valign = 1
 [node name="currency" type="Sprite" parent="HUD/Characters/ar/Money"]
 position = Vector2( -51.4286, 31.4286 )
 scale = Vector2( 0.498949, 0.498949 )
-texture = ExtResource( 19 )
+texture = ExtResource( 23 )
 
 [node name="sniper" type="TextureButton" parent="HUD/Characters"]
 margin_left = -7.12495
@@ -384,7 +429,7 @@ margin_top = 470.0
 margin_right = 312.875
 margin_bottom = 790.0
 rect_scale = Vector2( 0.35, 0.35 )
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 25 )
 
 [node name="Money" type="Label" parent="HUD/Characters/sniper"]
 margin_left = 420.357
@@ -399,12 +444,12 @@ valign = 1
 [node name="currency" type="Sprite" parent="HUD/Characters/sniper/Money"]
 position = Vector2( -51.4286, 31.4286 )
 scale = Vector2( 0.498949, 0.498949 )
-texture = ExtResource( 19 )
+texture = ExtResource( 23 )
 
 [node name="sniper_icon" type="Sprite" parent="HUD/Characters/sniper"]
 position = Vector2( 208.928, 134.286 )
 scale = Vector2( 0.435287, 0.435287 )
-texture = ExtResource( 24 )
+texture = ExtResource( 28 )
 
 [node name="nerf" type="TextureButton" parent="HUD/Characters"]
 margin_left = -7.12495
@@ -412,7 +457,7 @@ margin_top = 590.0
 margin_right = 312.875
 margin_bottom = 910.0
 rect_scale = Vector2( 0.35, 0.35 )
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 25 )
 
 [node name="Money" type="Label" parent="HUD/Characters/nerf"]
 margin_left = 420.357
@@ -428,18 +473,18 @@ valign = 1
 [node name="currency" type="Sprite" parent="HUD/Characters/nerf/Money"]
 position = Vector2( -51.4286, 31.4286 )
 scale = Vector2( 0.498949, 0.498949 )
-texture = ExtResource( 19 )
+texture = ExtResource( 23 )
 
 [node name="sniper_icon" type="Sprite" parent="HUD/Characters/nerf"]
 position = Vector2( 154.643, 171.429 )
 scale = Vector2( 0.842644, 0.842644 )
-texture = ExtResource( 25 )
+texture = ExtResource( 29 )
 
 [node name="Audio" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 26 )
+stream = ExtResource( 30 )
 volume_db = -20.0
 autoplay = true
 [connection signal="mouse_entered" from="HUD/Characters/guards" to="HUD/Characters" method="_on_guards_mouse_entered"]
